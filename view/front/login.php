@@ -22,17 +22,24 @@ function wp_ls_login_layout()
                 <div class="modal-body">
                     <h4 class="modal-header-title">ورود به حساب</h4>
                     <div class="login-form">
-                        <form>
+                        <form class="lr-login">
 
                             <div class="form-group">
                                 <label>نام کاربری</label>
-                                <input type="text" class="form-control" placeholder="نام کاربری">
+                                <input type="text" id="email" class="form-control" placeholder="ایمیل">
                             </div>
 
                             <div class="form-group">
                                 <label>رمز عبور</label>
-                                <input type="password" class="form-control" placeholder="*******">
+                                <input type="password" id="password" class="form-control" placeholder="*******">
                             </div>
+
+                            <ul>
+                                <li>
+                                    <input id="remember-me" class="checkbox-custom" name="reg" type="checkbox">
+                                    <label for="reg" class="checkbox-custom-label">من را به خاطر بسپار</label>
+                                </li>
+                            </ul>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-md full-width pop-login">ورود به حساب</button>
@@ -43,10 +50,6 @@ function wp_ls_login_layout()
 
                     <div class="social-login mb-3">
                         <ul>
-                            <li>
-                                <input id="reg" class="checkbox-custom" name="reg" type="checkbox">
-                                <label for="reg" class="checkbox-custom-label">ذخیره رمزعبور</label>
-                            </li>
                             <li class="left"><a href="#" class="theme-cl">رمز عبور خود را فراموش کرده اید؟</a></li>
                         </ul>
                     </div>
