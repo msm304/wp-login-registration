@@ -18,12 +18,21 @@ define('LR_PLUGIN_URL', plugin_dir_url(__FILE__));
 function wp_lr_register_assets()
 {
     // css
+    wp_register_style('slick', LR_PLUGIN_URL . '/assets/css/front/slick.css', '', '1.6.0');
+    wp_enqueue_style('slick');
+
+    wp_register_style('slick-theme', LR_PLUGIN_URL . '/assets/css/front/slick-theme.css', '', '1.6.0');
+    wp_enqueue_style('slick-theme');
+
     wp_register_style('lr-style', LR_PLUGIN_URL . '/assets/css/front/front-style.css', '', '1.0.0');
     wp_enqueue_style('lr-style');
 
     // script
     wp_register_script('toast-js', LR_PLUGIN_URL . '/assets/js/front/jquery.toast.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('toast-js');
+
+    wp_register_script('slick', LR_PLUGIN_URL . '/assets/js/front/slick.js', ['jquery'], '1.6.0', true);
+    wp_enqueue_script('slick');
 
     wp_register_script('lr-main-js', LR_PLUGIN_URL . '/assets/js/front/main.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('lr-main-js');
