@@ -1,0 +1,56 @@
+.element-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.element-wrapper input , .element-wrapper select {
+    border: 1px solid #efefef;
+    height: 46px;
+    width: 400px;
+}
+
+.element-wrapper label {
+    margin: 16px 0;
+    font-weight: bold;
+}
+
+.display-type label{
+    margin-left: 20px ;
+}
+
+.display-type input{
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.rp-wrapper .form-table th[scope=row]{
+    display: none;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group div{
+    display: flex;
+    align-items: center;
+}
+
+.input-group div output{
+    margin-right: 10px;
+    background-color: #efefef;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.label-group{
+    margin-top: 30px !important;
+    margin-bottom: 5px !important;
+}
+
+.fixed-position-option{
+    display: none;
+}
