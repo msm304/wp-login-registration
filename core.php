@@ -61,7 +61,13 @@ add_action('admin_enqueue_scripts', 'wp_lr_register_assets_admin');
 
 // Inc files
 include_once LR_PLUGIN_DIR . '/view/front/login.php';
+include_once LR_PLUGIN_DIR . '/_inc/register.php';
 include_once LR_PLUGIN_DIR . '/_inc/login.php';
+include_once LR_PLUGIN_DIR . '/_inc/sendSms.php';
+include_once LR_PLUGIN_DIR . '/_inc/helper.php';
+include_once LR_PLUGIN_DIR . '/_inc/sms-function.php';
 
 register_activation_hook(__FILE__, 'wp_lr_set_setting');
 register_deactivation_hook(__FILE__, 'wp_lr_delete_setting');
+
+

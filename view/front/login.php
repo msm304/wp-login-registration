@@ -22,27 +22,28 @@ function wp_ls_login_layout()
                 <div class="modal-body">
                     <h4 class="modal-header-title">ورود به حساب</h4>
                     <div class="login-form">
+                        <div id="error-handler" class="alert"></div>
                         <form class="lr-login">
 
                             <div class="form-group">
                                 <label>نام کاربری</label>
-                                <input type="text" id="email" class="form-control" placeholder="ایمیل">
+                                <input type="text" id="email" value="soltani5747@gmail.com" class="form-control" placeholder="ایمیل">
                             </div>
 
                             <div class="form-group">
                                 <label>رمز عبور</label>
-                                <input type="password" id="password" class="form-control" placeholder="*******">
+                                <input type="password" value="12345" id="password" class="form-control" placeholder="*******">
                             </div>
 
                             <ul>
                                 <li>
                                     <input id="remember-me" class="checkbox-custom" name="reg" type="checkbox">
-                                    <label for="reg" class="checkbox-custom-label">من را به خاطر بسپار</label>
+                                    <label for="remember-me" class="checkbox-custom-label">من را به خاطر بسپار</label>
                                 </li>
                             </ul>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-md full-width pop-login">ورود به حساب</button>
+                                <button id="lr-loading" type="submit" class="btn btn-md full-width pop-login">ورود به حساب</button>
                             </div>
 
                         </form>
