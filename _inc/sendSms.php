@@ -19,5 +19,7 @@ function wp_ls_send_sms($args, $to,  $bodyId)
     curl_setopt($handle, CURLOPT_POST, true);
     curl_setopt($handle, CURLOPT_POSTFIELDS, $post_data);
     $response = curl_exec($handle);
+    $response = json_decode($response);
     // var_dump($response);
+    return $response;
 }

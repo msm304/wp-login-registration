@@ -10,6 +10,10 @@ Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
 
+if(!session_id()){
+    session_start();
+}
+
 defined('ABSPATH') || exit;
 
 define('LR_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -23,6 +27,9 @@ function wp_lr_register_assets()
 
     wp_register_style('slick-theme', LR_PLUGIN_URL . '/assets/css/front/slick-theme.css', '', '1.6.0');
     wp_enqueue_style('slick-theme');
+
+    wp_register_style('jquery.toast', LR_PLUGIN_URL . '/assets/css/front/jquery.toast.css', '', '1.6.0');
+    wp_enqueue_style('jquery.toast');
 
     wp_register_style('lr-style', LR_PLUGIN_URL . '/assets/css/front/front-style.css', '', '1.0.0');
     wp_enqueue_style('lr-style');

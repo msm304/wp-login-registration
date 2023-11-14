@@ -46,32 +46,53 @@ jQuery(document).ready(function ($) {
     });
   });
   // send sms
-    $("body").on("click", "#send-code", function (e) {
-      e.preventDefault();
-      let el = $(this);
-      let user_phone = $(".user-phone").val();
-      $.ajax({
-        url: lr_ajax.lr_ajaxurl,
-        type: "POST",
-        dataType: "JSON",
-        data: {
-          action: "wp_lr_auth_send_verification_code",
-          user_phone: user_phone,
-          nonce: lr_ajax._lr_nonce,
-        },
-        success: function (response) {
-          $("#user-phone-number").hide();
-          $("#verification-code").show();
-          el.attr("id", "verify-code");
-          el.text("اعتبار سنجی کد تایید");
-        },
-        error: function (error) {
-          if (error.responseJSON.error) {
-            alert(error.responseJSON.message);
+  $("body").on("click", "#send-code", function (e) {
+    e.preventDefault();
+    let el = $(this);
+    let user_phone = $(".user-phone").val();
+    $.ajax({
+      url: lr_ajax.lr_ajaxurl,
+      type: "POST",
+      dataType: "JSON",
+      data: {
+        action: "wp_lr_auth_send_verification_code",
+        user_phone: user_phone,
+        nonce: lr_ajax._lr_nonce,
+      },
+      success: function (response) {
+        $("#user-phone-number").hide();
+        $("#verification-code").show();
+        el.attr("id", "verify-code");
+        el.text("اعتبار سنجی کد تایید");
+        if (response.success) {
+          $.toast({
+            text: response.message,
+            icon: "success",
+            loader: true, // Change it to false to disable loader
+            loaderBg: "#202124", // To change the background
+            bgColor: "#2ecc71",
+            textAlign: "right",
+            hideAfter: 22222222223333333,
+          });
+        }
+      },
+      error: function (error) {
+        if (error.responseJSON.error) {
+          // alert(error.responseJSON.message);
+          if (error) {
+            $.toast({
+              heading: "توجه !!!",
+              text: error.responseJSON.message,
+              icon: "error",
+              loader: true, // Change it to false to disable loader
+              loaderBg: "#202124", // To change the background
+              textAlign: "right",
+            });
           }
-        },
-      });
+        }
+      },
     });
+  });
   $("body").on("click", "#verify-code", function (e) {
     e.preventDefault();
     let el = $(this);
@@ -86,8 +107,9 @@ jQuery(document).ready(function ($) {
         nonce: lr_ajax._lr_nonce,
       },
       success: function (response) {
-        $("#user-phone-number").hide();
-        $("#verification-code").show();
+        $("#get-user-phone").html(
+          '<div id="register_form"> <div class="form-group"><label>نام و نام خانوادگی*</label> <input type="text" class="form-control display-name" value=""  placeholder="نام و نام خانوادگی..."> </div> <div class="form-group"><label>ایمیل*</label><input type="email..." class="form-control email" value="" placeholder="email..." dir="ltr"></div> <div class="form-group"><label>رمز عبور*</label><input type="text" class="form-control password" value=""></div> <div class="form-group"> <a href="" class="btn btn_apply w-100 " id="register-user">ثبت نام</a> </div></div>'
+        );
       },
       error: function (error) {
         if (error.responseJSON.error) {
@@ -96,6 +118,31 @@ jQuery(document).ready(function ($) {
       },
     });
   });
-
-
+  $("body").on("click", "#register-user", function (e) {
+    e.preventDefault();
+    let el = $(this);
+    let display_name = $(".display-name").val();
+    let email = $(".email").val();
+    let password = $(".password").val();
+    $.ajax({
+      url: lr_ajax.lr_ajaxurl,
+      type: "POST",
+      dataType: "JSON",
+      data: {
+        action: "wp_lr_register_user",
+        display_name: display_name,
+        email: email,
+        password: password,
+        nonce: lr_ajax._lr_nonce,
+      },
+      beforeSend: function () {},
+      success: function (response) {},
+      error: function (error) {
+        if (error.responseJSON.error) {
+          alert(error.responseJSON.message);
+        }
+      },
+      complete: function () {},
+    });
+  });
 });
