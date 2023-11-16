@@ -10,7 +10,7 @@ Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
 
-if(!session_id()){
+if (!session_id()) {
     session_start();
 }
 
@@ -73,8 +73,16 @@ include_once LR_PLUGIN_DIR . '/_inc/login.php';
 include_once LR_PLUGIN_DIR . '/_inc/sendSms.php';
 include_once LR_PLUGIN_DIR . '/_inc/helper.php';
 include_once LR_PLUGIN_DIR . '/_inc/sms-function.php';
+include_once LR_PLUGIN_DIR . '/_inc/sendMail.php';
+include_once(ABSPATH . 'wp-includes/pluggable.php');
 
 register_activation_hook(__FILE__, 'wp_lr_set_setting');
 register_deactivation_hook(__FILE__, 'wp_lr_delete_setting');
 
-
+function mail_error($wp_error)
+{
+    echo '<pre>';
+    print_r($wp_error);
+    echo '<pre>';
+}
+add_action('wp_mail_failed', 'mail_error');
